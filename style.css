@@ -18,5 +18,8 @@ canvas {
 .settings {
     display: flex;
     justify-content: center;
-    margin: .625rem;
+}
+
+.settings >* {
+    margin: .3125rem;
 }
