@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
 body {
     margin: 0;
+    font-family: 'Comfortaa', cursive;
 }
 
 canvas {
@@ -15,4 +18,5 @@ canvas {
 .settings {
     display: flex;
     justify-content: center;
+    margin: .625rem;
 }
