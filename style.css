@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.canvas-container {
+    margin: 0 auto;
+}
+
+.settings {
+    display: flex;
+    justify-content: center;
+}

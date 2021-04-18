@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mister Canvas</title>
+    <link rel="icon" type="image/webp" href="bucket.webp"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="init()">
+    <div class="settings">
+        <label for="stroke-color">Choose a stroke color:</label>
+        <input type="color" id="stroke-color">
+        <label for="inside-color">Choose a filling color:</label>
+        <input type="color" id="inside-color">
+        <select onchange="setShape(this)" name="shapes" id="shapes">
+            <option value="triangle">Triangle</option>
+            <option value="rect">Rect</option>
+            <option value="circle">Circle</option>
+            <option value="line">Line</option>
+        </select>
+
+        <button onclick="clearCanvas()">Clear</button>
+        <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
+    </div>
+
+    <div class="canvas-container">
+        <canvas id="my-canvas" width="550" height="550" ontouchstart="startDrawTouch(event)" onmousedown="startDraw(event)" ontouchend="drawTouch(event)" onmouseup="draw(event)">
+            Update your browser to enjoy canvas!
+        </canvas>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
