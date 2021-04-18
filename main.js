@@ -65,9 +65,11 @@ function onMouseDown(ev) {
 }
 
 function onTouchMove(ev) {
+    let elCanvas = ev.target;
+
     ev.preventDefault();
-    gEndOffsetX = ev.touches[0].clientX;
-    gEndOffsetY = ev.touches[0].clientY;
+    gEndOffsetX = elCanvas.getBoundingClientRect().left - ev.touches[0].clientX;
+    gEndOffsetY = elCanvas.getBoundingClientRect().top - ev.touches[0].clientY;
 }
 
 function onTouchStart(ev) {
@@ -108,8 +110,6 @@ function draw(offsetX, offsetY) {
     }
 }
 
-
-
 function downloadCanvas(elLink) {
     const data = gElCanvas.toDataURL();
     elLink.href = data;
@@ -118,4 +118,4 @@ function downloadCanvas(elLink) {
 
 function getRandomInt(min, max) {
     return Math.random() * (max - min + 1) + min;
-  }
+}
