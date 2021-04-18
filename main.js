@@ -65,17 +65,17 @@ function onMouseDown(ev) {
 }
 
 function onTouchMove(ev) {
-    let elCanvas = ev.target;
-
     ev.preventDefault();
-    gEndOffsetX = elCanvas.getBoundingClientRect().left - ev.touches[0].clientX;
-    gEndOffsetY = elCanvas.getBoundingClientRect().top - ev.touches[0].clientY;
+    let touch = ev.touches[0];
+    gEndOffsetX = touch.pageX - gElCanvas.getBoundingClientRect().left;
+    gEndOffsetY = touch.pageY - gElCanvas.getBoundingClientRect().top;
 }
 
 function onTouchStart(ev) {
     ev.preventDefault();
-    gStartOffsetX = ev.touches[0].clientX;
-    gStartOffsetY = ev.touches[0].clientY;
+    let touch = ev.touches[0];
+    gStartOffsetX = touch.pageX - gElCanvas.getBoundingClientRect().left;
+    gStartOffsetY = touch.pageY - gElCanvas.getBoundingClientRect().top;
 }
 
 function onMouseUp(ev) {
