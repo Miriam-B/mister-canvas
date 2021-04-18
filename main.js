@@ -3,6 +3,8 @@ var gCtx;
 var gCurrShape = 'triangle';
 var gStartOffsetX;
 var gStartOffsetY;
+var gEndOffsetX;
+var gEndOffsetY;
 
 function init() {
     gElCanvas = document.getElementById('my-canvas');
@@ -57,19 +59,39 @@ function setShape(ev) {
     gCurrShape = ev.value;
 }
 
-function startDraw(ev) {
+function onMouseDown(ev) {
     gStartOffsetX = ev.offsetX;
     gStartOffsetY = ev.offsetY;
 }
 
-function startDrawTouch(ev) {
+function onTouchMove(ev) {
+    ev.preventDefault();
+    gEndOffsetX = ev.touches[0].clientX;
+    gEndOffsetY = ev.touches[0].clientY;
+}
+
+function onTouchStart(ev) {
+    ev.preventDefault();
     gStartOffsetX = ev.touches[0].clientX;
     gStartOffsetY = ev.touches[0].clientY;
 }
 
-function draw(ev) {
+function onMouseUp(ev) {
     const offsetX = ev.offsetX;
     const offsetY = ev.offsetY;
+
+    draw(offsetX, offsetY);
+}
+
+function onTouchEnd(ev) {
+    ev.preventDefault();
+    const offsetX = gEndOffsetX;
+    const offsetY = gEndOffsetY;
+
+    draw(offsetX, offsetY);
+}
+
+function draw(offsetX, offsetY) {
     switch (gCurrShape) {
         case 'triangle':
             drawTriangle(offsetX, offsetY, gStartOffsetX, gStartOffsetY);
@@ -86,24 +108,7 @@ function draw(ev) {
     }
 }
 
-function drawTouch(ev) {
-    const offsetX = ev.touches[0].clientX;
-    const offsetY = ev.touches[0].clientY;
-    switch (gCurrShape) {
-        case 'triangle':
-            drawTriangle(offsetX, offsetY, gStartOffsetX, gStartOffsetY);
-            break;
-        case 'rect':
-            drawRect(offsetX, offsetY, gStartOffsetX, gStartOffsetY);
-            break;
-        case 'circle':
-            drawCircle(offsetX, offsetY, gStartOffsetX, gStartOffsetY);
-            break;
-        case 'line':
-            drawLine(gStartOffsetX, gStartOffsetY, offsetX, offsetY);
-            break;
-    }
-}
+
 
 function downloadCanvas(elLink) {
     const data = gElCanvas.toDataURL();

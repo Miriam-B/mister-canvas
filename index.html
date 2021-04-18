@@ -25,7 +25,7 @@
     </div>
 
     <div class="canvas-container">
-        <canvas id="my-canvas" width="550" height="550" ontouchstart="startDrawTouch(event)" onmousedown="startDraw(event)" ontouchend="drawTouch(event)" onmouseup="draw(event)">
+        <canvas id="my-canvas" width="550" height="550" ontouchstart="onTouchStart(event)" onmousedown="onMouseDown(event)" ontouchmove="onTouchMove(event)" ontouchend="onTouchEnd(event)" onmouseup="onMouseUp(event)">
             Update your browser to enjoy canvas!
         </canvas>
     </div>
